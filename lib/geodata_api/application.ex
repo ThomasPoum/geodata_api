@@ -10,6 +10,8 @@ defmodule GeodataApi.Application do
     children = [
       # Starts a worker by calling: GeodataApi.Worker.start_link(arg)
       # {GeodataApi.Worker, arg}
+      Geodata_api.Repo,
+      {Plug.Cowboy, scheme: :http, plug: GeodataApi.Router, options: [port: Application.get_env(:geodata_api, :port)]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -18,3 +20,5 @@ defmodule GeodataApi.Application do
     Supervisor.start_link(children, opts)
   end
 end
+
+
