@@ -3,6 +3,8 @@ defmodule GeodataApi.Tokens.Tokens do
   alias Geodata_api.Repo
   import Ecto.Query
 
+
+
   def create_token(attrs \\ %{}) do
     %Token{}
     |> Token.changeset(attrs)
